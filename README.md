@@ -13,7 +13,7 @@ In the area there will be multiple targets for exploration, survey and developin
 ***
 
 ## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+Roadmap forthcoming.
 
 ## Contributing
 This project is not soliciting outside contributions.
