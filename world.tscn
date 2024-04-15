@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://mn4hilduyhtm"]
+
+[ext_resource type="PackedScene" uid="uid://cyrbnd8re0fi2" path="res://models/drones/drone_basic.blend" id="1_t6hnp"]
+[ext_resource type="Script" path="res://RTS_Camera.gd" id="2_6hy4e"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_g8ryg"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_g1trb"]
+sky_material = SubResource("ProceduralSkyMaterial_g8ryg")
+
+[sub_resource type="Environment" id="Environment_6uuhb"]
+background_mode = 2
+sky = SubResource("Sky_g1trb")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eeuvq"]
+albedo_color = Color(0.133333, 0.180392, 0.262745, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_5aocj"]
+size = Vector2(50, 50)
+
+[node name="World" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_6uuhb")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 33.0852, 0)
+light_color = Color(1, 1, 0.894118, 1)
+shadow_enabled = true
+
+[node name="Terrain" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_eeuvq")
+mesh = SubResource("PlaneMesh_5aocj")
+
+[node name="Drone" parent="." instance=ExtResource("1_t6hnp")]
+transform = Transform3D(0.075705, 0, -0.10856, 0, 0.13209, 0, 0.108243, 0, 0.0759269, 0.923423, 0.120629, 0.666917)
+
+[node name="camera_base" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 11.5896)
+script = ExtResource("2_6hy4e")
+
+[node name="camera_socket" type="Node3D" parent="camera_base"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 3, 0)
+
+[node name="Camera" type="Camera3D" parent="camera_base/camera_socket"]
