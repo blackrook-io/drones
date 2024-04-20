@@ -1,2 +1,9 @@
 # Godot 4+ specific ignores
 .godot/
+
+# Temporary files from renames.
+*.tmp
+
+# Import directory and metadata files.
+.import/
+*.import
