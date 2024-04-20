@@ -13,7 +13,7 @@ In the area there will be multiple targets for exploration, survey and developin
 ***
 
 ## Roadmap
-Roadmap forthcoming.
+Roadmap forthcoming in later updates.
 
 ## Contributing
 This project is not soliciting outside contributions.
