@@ -1,7 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://mn4hilduyhtm"]
+[gd_scene load_steps=11 format=3 uid="uid://mn4hilduyhtm"]
 
 [ext_resource type="PackedScene" uid="uid://cyrbnd8re0fi2" path="res://models/drones/drone_basic.blend" id="1_t6hnp"]
 [ext_resource type="Script" path="res://RTS_Camera.gd" id="2_6hy4e"]
+[ext_resource type="PackedScene" uid="uid://cnjc4t8yv282a" path="res://models/structures/storage_gas.blend" id="3_silpl"]
+[ext_resource type="PackedScene" uid="uid://pjspnv4xn56d" path="res://models/structures/storage_solid.blend" id="4_0r30h"]
+[ext_resource type="PackedScene" uid="uid://doanaqy7wvaya" path="res://models/structures/solar_array.blend" id="5_jgnwi"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_g8ryg"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -35,9 +38,10 @@ shadow_enabled = true
 [node name="Terrain" type="MeshInstance3D" parent="."]
 material_override = SubResource("StandardMaterial3D_eeuvq")
 mesh = SubResource("PlaneMesh_5aocj")
+metadata/_edit_lock_ = true
 
 [node name="Drone" parent="." instance=ExtResource("1_t6hnp")]
-transform = Transform3D(0.075705, 0, -0.10856, 0, 0.13209, 0, 0.108243, 0, 0.0759269, 0.923423, 0.120629, 0.666917)
+transform = Transform3D(0.075705, 0, -0.10856, 0, 0.13209, 0, 0.108243, 0, 0.0759269, -4.6246, 0.120629, -1.91296)
 
 [node name="camera_base" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 11.5896)
@@ -47,3 +51,22 @@ script = ExtResource("2_6hy4e")
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 3, 0)
 
 [node name="Camera" type="Camera3D" parent="camera_base/camera_socket"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.79603, 4.35148, -4.35148)
+
+[node name="storage_gas" parent="." instance=ExtResource("3_silpl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.97981, 0.0933673, -2.31845)
+
+[node name="storage_gas2" parent="." instance=ExtResource("3_silpl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.92822, 0.0934684, -0.120092)
+
+[node name="storage_solid" parent="." instance=ExtResource("4_0r30h")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -8.20678, 0, -5.19792)
+
+[node name="solar_array" parent="." instance=ExtResource("5_jgnwi")]
+transform = Transform3D(-0.190616, -0.000469953, 0.281605, -0.000122446, 0.340052, 0.000484613, -0.281605, 0.000170253, -0.190616, -5.72164, 0, -5.41769)
+
+[node name="solar_array2" parent="." instance=ExtResource("5_jgnwi")]
+transform = Transform3D(-0.190616, -0.000469953, 0.281605, -0.000122446, 0.340052, 0.000484613, -0.281605, 0.000170253, -0.190616, -4.81342, 0, -5.41769)
+
+[node name="solar_array3" parent="." instance=ExtResource("5_jgnwi")]
+transform = Transform3D(-0.190616, -0.000469953, 0.281605, -0.000122446, 0.340052, 0.000484613, -0.281605, 0.000170253, -0.190616, -3.9021, 0, -5.41769)
