@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://bs54kwi8fywoa"]
+
+[ext_resource type="Script" path="res://drone.gd" id="1_8fs2h"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_14ox8"]
+radius = 0.1
+height = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0owrb"]
+albedo_color = Color(0, 0.764929, 0.766464, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_eyrb6"]
+material = SubResource("StandardMaterial3D_0owrb")
+radius = 0.1
+height = 0.5
+
+[node name="Drone" type="CharacterBody3D"]
+script = ExtResource("1_8fs2h")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+shape = SubResource("CapsuleShape3D_14ox8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+mesh = SubResource("CapsuleMesh_eyrb6")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+avoidance_enabled = true
+debug_path_custom_color = Color(3.85046e-07, 0.846624, 0.847413, 1)
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="RayCast3D" type="RayCast3D" parent="."]

@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://qpdsdqcalwgu"]
+
+[ext_resource type="Script" path="res://user_interface/inv_slot/inv_slot.gd" id="1_o20dl"]
+
+[node name="InvSlot" type="HBoxContainer"]
+script = ExtResource("1_o20dl")
+
+[node name="ResourceLabel" type="Label" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Fe"
+horizontal_alignment = 2
+
+[node name="AmountLabel" type="Label" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "200"
+horizontal_alignment = 2

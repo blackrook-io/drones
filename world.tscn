@@ -1,10 +1,17 @@
-[gd_scene load_steps=11 format=3 uid="uid://mn4hilduyhtm"]
+[gd_scene load_steps=19 format=3 uid="uid://mn4hilduyhtm"]
 
-[ext_resource type="PackedScene" uid="uid://cyrbnd8re0fi2" path="res://models/drones/drone_basic.blend" id="1_t6hnp"]
-[ext_resource type="Script" path="res://RTS_Camera.gd" id="2_6hy4e"]
-[ext_resource type="PackedScene" uid="uid://cnjc4t8yv282a" path="res://models/structures/storage_gas.blend" id="3_silpl"]
-[ext_resource type="PackedScene" uid="uid://pjspnv4xn56d" path="res://models/structures/storage_solid.blend" id="4_0r30h"]
-[ext_resource type="PackedScene" uid="uid://doanaqy7wvaya" path="res://models/structures/solar_array.blend" id="5_jgnwi"]
+[ext_resource type="Script" path="res://world.gd" id="1_o7gif"]
+[ext_resource type="Script" path="res://scripts/rts_camera.gd" id="2_6hy4e"]
+[ext_resource type="PackedScene" uid="uid://n01ponjc13xr" path="res://models/structures/storage_gas.blend" id="3_silpl"]
+[ext_resource type="PackedScene" uid="uid://igue1emc8fwf" path="res://models/structures/storage_solid.blend" id="4_0r30h"]
+[ext_resource type="PackedScene" uid="uid://qtoxe6uyp86p" path="res://resource_site.tscn" id="5_23gyn"]
+[ext_resource type="PackedScene" uid="uid://bakjkhkg1arhe" path="res://models/structures/solar_array.blend" id="5_jgnwi"]
+[ext_resource type="PackedScene" uid="uid://bs54kwi8fywoa" path="res://drone.tscn" id="6_ytwct"]
+[ext_resource type="Script" path="res://resource_site.gd" id="8_51dpy"]
+[ext_resource type="Script" path="res://scripts/global_tick_timer.gd" id="9_ykjny"]
+[ext_resource type="Script" path="res://scripts/ui_root.gd" id="10_bdp06"]
+[ext_resource type="PackedScene" uid="uid://bxtbkom74dh6u" path="res://user_interface/inventory_dialog/inventory_dialog.tscn" id="10_dj8j5"]
+[ext_resource type="PackedScene" uid="uid://qpdsdqcalwgu" path="res://user_interface/inv_slot/inv_slot.tscn" id="12_1l1et"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_g8ryg"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -19,6 +26,13 @@ sky = SubResource("Sky_g1trb")
 tonemap_mode = 2
 glow_enabled = true
 
+[sub_resource type="NavigationMesh" id="NavigationMesh_4uq7t"]
+vertices = PackedVector3Array(-249.5, 0.2, -249.5, -249.5, 0.2, 249.5, 249.5, 0.2, 249.5, 249.5, 0.2, -249.5)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+cell_height = 0.1
+agent_height = 0.5
+agent_max_climb = 0.1
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eeuvq"]
 albedo_color = Color(0.133333, 0.180392, 0.262745, 1)
 
@@ -26,6 +40,7 @@ albedo_color = Color(0.133333, 0.180392, 0.262745, 1)
 size = Vector2(50, 50)
 
 [node name="World" type="Node3D"]
+script = ExtResource("1_o7gif")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_6uuhb")
@@ -35,13 +50,15 @@ transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75
 light_color = Color(1, 1, 0.894118, 1)
 shadow_enabled = true
 
-[node name="Terrain" type="MeshInstance3D" parent="."]
-material_override = SubResource("StandardMaterial3D_eeuvq")
-mesh = SubResource("PlaneMesh_5aocj")
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_4uq7t")
 metadata/_edit_lock_ = true
 
-[node name="Drone" parent="." instance=ExtResource("1_t6hnp")]
-transform = Transform3D(0.075705, 0, -0.10856, 0, 0.13209, 0, 0.108243, 0, 0.0759269, -4.6246, 0.120629, -1.91296)
+[node name="Terrain" type="MeshInstance3D" parent="NavigationRegion3D"]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_eeuvq")
+mesh = SubResource("PlaneMesh_5aocj")
+skeleton = NodePath("../..")
 
 [node name="camera_base" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 11.5896)
@@ -51,22 +68,55 @@ script = ExtResource("2_6hy4e")
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 3, 0)
 
 [node name="Camera" type="Camera3D" parent="camera_base/camera_socket"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.79603, 4.35148, -4.35148)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.17681, 4.35148, -4.35148)
 
 [node name="storage_gas" parent="." instance=ExtResource("3_silpl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.97981, 0.0933673, -2.31845)
-
-[node name="storage_gas2" parent="." instance=ExtResource("3_silpl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.92822, 0.0934684, -0.120092)
 
 [node name="storage_solid" parent="." instance=ExtResource("4_0r30h")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -8.20678, 0, -5.19792)
 
 [node name="solar_array" parent="." instance=ExtResource("5_jgnwi")]
-transform = Transform3D(-0.190616, -0.000469953, 0.281605, -0.000122446, 0.340052, 0.000484613, -0.281605, 0.000170253, -0.190616, -5.72164, 0, -5.41769)
+transform = Transform3D(-0.190616, -0.000469953, 0.281605, -0.000122446, 0.340052, 0.000484613, -0.281605, 0.000170253, -0.190616, -7.39532, 0, 0.58231)
 
-[node name="solar_array2" parent="." instance=ExtResource("5_jgnwi")]
-transform = Transform3D(-0.190616, -0.000469953, 0.281605, -0.000122446, 0.340052, 0.000484613, -0.281605, 0.000170253, -0.190616, -4.81342, 0, -5.41769)
+[node name="Drone" parent="." groups=["drones"] instance=ExtResource("6_ytwct")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.24751, 0, 0)
+movement_speed = 2.0
+drone_state = "IDLE"
 
-[node name="solar_array3" parent="." instance=ExtResource("5_jgnwi")]
-transform = Transform3D(-0.190616, -0.000469953, 0.281605, -0.000122446, 0.340052, 0.000484613, -0.281605, 0.000170253, -0.190616, -3.9021, 0, -5.41769)
+[node name="Site_Iron" parent="." groups=["resource_sites"] instance=ExtResource("5_23gyn")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.866684, 0, -12.1791)
+script = ExtResource("8_51dpy")
+RESOURCE = "Fe"
+NAME = "Iron Site"
+QUANTITY = 100
+
+[node name="Site_Storage" parent="." groups=["resource_sites"] instance=ExtResource("5_23gyn")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.76637, 0, -4.00823)
+script = ExtResource("8_51dpy")
+RESOURCE = "Fe"
+NAME = "Iron Site"
+
+[node name="Global_Tick_Timer" type="Timer" parent="."]
+autostart = true
+script = ExtResource("9_ykjny")
+
+[node name="UIRoot" type="CanvasLayer" parent="."]
+script = ExtResource("10_bdp06")
+
+[node name="InventoryDialog" parent="UIRoot" instance=ExtResource("10_dj8j5")]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 3
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -204.0
+offset_top = -58.0
+offset_bottom = 0.0
+grow_vertical = 0
+slot_scene = ExtResource("12_1l1et")
+
+[connection signal="timeout" from="Global_Tick_Timer" to="Drone" method="_on_global_tick_timer_timeout"]
