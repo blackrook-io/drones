@@ -12,8 +12,22 @@ In the area there will be multiple targets for exploration, survey and developin
 
 ***
 
+## Story background
+
+Humans expanded and left earth, exploring the galaxy.
+
+In one remote system, they found a planet torn apart by the gravitational field of a larger gas giant, turning the planet into a ring system rich in materials and elements.
+
+An effort was made, using drones, to start mining that ring system, but something happened to the human settlers that erased them from the system.
+
+Game picks up in the future, as the 'hive' or 'colony' or 'initial settlement' comes out of the umbra of the planet to be exposed to the star's light.  This melts ice that covered solar panels, charging the last remaining drone(s), waking them up.  This is where the player starts, with bare minimum supplies, infrastructure, and resources. 
+
 ## Roadmap
-(Roadmap forthcoming in later updates)
+## Release Names
+Proximus  (0.1 - 0.9)
+Dawn      (1.0)
+Genesis   (2.0)
+Scorpius  (3.0)
 
 ## Contributing
 This project is not soliciting outside contributions.
@@ -23,3 +37,11 @@ GNU General Public License v3.0
 
 ## Project status
 A hobby project in my spare time.
+
+---
+
+## Icon Production
+https://cloudconvert.com provides a way to convert png files to icns, and allows for all OSes (.icns for Mac, .ico for Windows, Linux uses png already, all at 256x256px).  A single high-res (1024px) png image is all that is required to generate all the icon files that the app will need.
+
+## Soundtrack
+The game background soundtrack will be entirely by Stellardrone, with heavy documentation and links to his work on SoundCloud.  Players can of course turn off background music.
