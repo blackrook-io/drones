@@ -1,5 +1,7 @@
 # Godot 4+ specific ignores
 .godot/
+/android/
+*.translation
 
 # Temporary files from renames.
 *.tmp
@@ -7,3 +9,18 @@
 # Import directory and metadata files.
 .import/
 *.import
+
+# C sharp:
+nupkg/
+bin/
+obj/
+.generated/
+
+# VSCode:
+.vs/
+
+# Mac OS:
+.DS_Store
+
+# Blender:
+*.blend1
