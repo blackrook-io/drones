@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bs54kwi8fywoa"]
 
-[ext_resource type="Script" path="res://drone.gd" id="1_8fs2h"]
+[ext_resource type="Script" path="res://drones/drone.gd" id="1_8fs2h"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_14ox8"]
 radius = 0.1
