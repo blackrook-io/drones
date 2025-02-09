@@ -1,0 +1,24 @@
+Below is a lexicon of terms used in the application, so that you can familiarize yourself with the content.
+
+
+### StellarObject ###
+Any object that forms the core of a System.  This is most commonly a Star, or rarely a BinaryStar, but sometimes systems can be found orbiting a BlackHole.  The StellarObject(s) generally are the first-class citizen of a System, with all other objects in the System orbiting it, or other Orbital objects.  Synomymous with the term [Astronomical Object](https://en.wikipedia.org/wiki/Astronomical_object).
+
+A system's StellarObject will have a few statistics that are notable, such as a [barycenter](https://en.wikipedia.org/wiki/Barycenter), [Class](https://en.wikipedia.org/wiki/Stellar_classification), [Coordinates](https://en.wikipedia.org/wiki/Galactic_coordinate_system) and so on.
+
+### Orbital ###
+Any object, *except for* a StellarObject, that orbits another object.  This is most commonly a Planet, Moon, Asteroid, or a man-made Installation such as a Space Station or Platform.  But other Orbitals can be comets, asteroid fields, and rogue planets and have an irregular orbital pattern and timing.   All Orbitals have a parent object which it orbits, and many Orbitals will be classified on how 'deep' from the StellarObject they are traced.  A planet, for instance, would be a second tier Orbital, whereas a moon that circled that planet would be a third tier Orbital.  A platform in orbit around that moon, then, would be a fourth-tier.
+
+### Celestial Coordinate System ###
+The system that this game will be using is based on the [Galactic Coordinate System](https://en.wikipedia.org/wiki/Galactic_coordinate_system), which is a celestial coordinate system in spherical coordinates, with the Sun as its center, the primary direction aligned with the approximate center of the Milky Way galaxy, and the fundamental plane approximately in the galactic plane.  Given the sheer size of the galaxy and the billions of stars within it, we will be starting small and working outward.  Thus, a galactic-centric viewpoint for coordinates makes sense at this time.
+
+![236084main_MilkyWay-full-annotated.jpg](https://bitbucket.org/repo/LBxLBq/images/1793408651-236084main_MilkyWay-full-annotated.jpg)
+
+### Time Dilation Problem ###
+To alleviate the confusion and game-breaking implications of [Time Dilation](https://en.wikipedia.org/wiki/Time_dilation) inherent in all faster-than-light interstellar travel (by today's theoretical limits and understanding), FTL propulsion and communications systems will dispense with all time dilation effects in order to make this game playable.  [Wormhole](https://en.wikipedia.org/wiki/Wormhole) traversal technology will be the central standard for all side-stepping around this issue.
+
+### Wormhole ###
+The primary channel for FTL interstellar travel, due to the meta-need of removal of Time Dilation and game-breaking incongruous timescale issues.  In most every stellar system, there will be wormhole generating structures ('stargates') that are powered by the solar source of the system.  That structure can be contacted by ships and their destination "dialed in" then the wormhole opened.  That wormhole will then be collapsed when the ship group traverses, in order to make preparation for the next group.  It should be noted that ships can, at their own peril, travel via other means than these 'stargates'.
+
+### Minable Materials ###
+[Asteroid Mining](https://en.wikipedia.org/wiki/Asteroid_mining) makes exo-planetary resource gathering both possible and lucrative.  Any Orbital could be theoretically mined, given a sizable investment in research, scanning technology and operations.  Materials commonly mined would include rare, heavy metals as well as more common minerals for construction purposes.  Gas giant planets might harbor large amounts of harvestable elements in gas form.  Each Orbital would present unique opportunities for mining operations.

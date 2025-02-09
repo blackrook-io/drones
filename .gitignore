@@ -6,6 +6,10 @@
 # Temporary files from renames.
 *.tmp
 
+# Ignore .ign files for local notes and organization.
+*.ign
+docs/unused_ignore/
+
 # Import directory and metadata files.
 .import/
 *.import
@@ -18,6 +22,10 @@ obj/
 
 # VSCode:
 .vs/
+
+# Other directories
+archive/
+web/
 
 # Mac OS:
 .DS_Store
