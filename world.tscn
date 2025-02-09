@@ -83,7 +83,6 @@ transform = Transform3D(-0.190616, -0.000469953, 0.281605, -0.000122446, 0.34005
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.24751, 0, 0)
 movement_speed = 2.0
-drone_state = "IDLE"
 
 [node name="Site_Iron" parent="." groups=["resource_sites"] instance=ExtResource("5_23gyn")]
 unique_name_in_owner = true
